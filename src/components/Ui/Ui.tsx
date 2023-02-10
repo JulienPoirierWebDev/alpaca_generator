@@ -3,6 +3,9 @@ import Button from "../Button/Button";
 
 const Ui = () => {
 
+    // TODO
+    // create reducer ?? context for state management
+
     type Styles = {
         [key: string]: string[]
     }
@@ -28,14 +31,14 @@ const Ui = () => {
                 <h2>Accessorize the alpaca's</h2>
                 {accessories.map((accessory) => {
                     // @ts-ignore
-                    return <Button element={accessory} handleClick={setActualAccessory}/>
+                    return <Button key={accessory} element={accessory} handleClick={setActualAccessory}/>
                 } )}
             </div>
             <div>
                 <h2>Style</h2>
                 {styles[actualAccessory].map((style:string) => {
                     // @ts-ignore
-                    return <Button element={style} handleClick={setActualAccessory}/>
+                    return <Button key={style} element={style} handleClick={function () {console.log("clic")}}/>
                 } )}
             </div>
         </div>
