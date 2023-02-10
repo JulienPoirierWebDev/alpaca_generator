@@ -1,6 +1,7 @@
 import './App.css'
 import 'normalize.css'
 import Title from "./components/Title/Title";
+import Avatar from "./components/Avatar/Avatar";
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <Title />
+        <Avatar/>
     </div>
   )
 }
