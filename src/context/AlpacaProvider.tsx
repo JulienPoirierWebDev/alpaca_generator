@@ -47,7 +47,7 @@ const useAlpacaContext = () => {
 const AlpacaProvider = ({children}:Props) => {
 
     const [actualAccessory, setActualAccessory] = React.useState("hair");
-    
+
     const [alpaca, setAlpaca] = React.useState({
         hair: "default",
         ears: "default",
@@ -55,7 +55,7 @@ const AlpacaProvider = ({children}:Props) => {
         mouth: "default",
         neck: "default",
         leg: "default",
-        accessory: "earrings",
+        accessory: "earings",
         background: "blue50"
     });
 
@@ -65,7 +65,7 @@ const AlpacaProvider = ({children}:Props) => {
 
         setAlpaca(newAlpaca);
     }
-    
+
     const accessories = ["hair","ears", "eyes", "mouth", "neck", "leg", "accessories", "background"];
     const styles:Styles= {
         hair: ["default", "bang", "curls", "elegant", "fancy", "quiff", "short"],
@@ -74,7 +74,7 @@ const AlpacaProvider = ({children}:Props) => {
         mouth: ["default", "astonished", "eating", "happy", "laugh", "tongue"],
         neck: ["default", "bend-backward", "bend-forward"],
         leg: ["default", "bubble-tea", "cookie", "game-console", "tilt-backward", "tilt-forward"],
-        accessories: ["earrings", "flower", "glasses", "headphone"],
+        accessories: ["earings", "flower", "glasses", "headphone"],
         background: ["blue50", "blue60", "blue70", "darkblue30", "darkblue50", "darkblue70", "green50", "green60", "green70", "grey40", "grey70", "grey80", "red50", "red60", "red70", "yellow50", "yellow60", "yellow70"]
     };
 
