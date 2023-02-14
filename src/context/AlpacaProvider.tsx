@@ -11,7 +11,7 @@ type Alpaca = {
     background: Styles["background"][number]
 }
 
-type AlpacaElements = "hair" | "ears" | "eyes" | "mouth" | "neck" | "leg" | "accessory" | "background";
+export type AlpacaElements = "hair" | "ears" | "eyes" | "mouth" | "neck" | "leg" | "accessory" | "background";
 
 type Styles = {
     [key: string]: string[]

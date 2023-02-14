@@ -13,15 +13,13 @@ const Ui = () => {
             <div>
                 <h2>Accessorize the alpaca's</h2>
                 {accessories?.map((accessory:string) => {
-                    // @ts-ignore
                     return <Button key={accessory} element={accessory} handleClick={setActualAccessory}/>
                 } )}
             </div>
             <div>
                 <h2>Style</h2>
                 {styles[actualAccessory].map((style:string) => {
-                    // @ts-ignore
-                    return <Button key={style} element={style} accessory={actualAccessory} handleClick={ () => {changeAlpaca(alpaca,actualAccessory,style)}}/>
+                    return <Button key={style} element={style} handleClick={ () => {changeAlpaca(alpaca,actualAccessory,style)}}/>
                 } )}
             </div>
         </div>

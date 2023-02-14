@@ -16,3 +16,8 @@
 .button:hover{
     outline: 1px solid royalblue;
 }
+
+.active {
+    background-color: royalblue;
+    color: white;
+}
