@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
-import { useAlpacaContext } from '../../context/AlpacaProvider';
+import {AlpacaElements, useAlpacaContext } from '../../context/AlpacaProvider';
 import styles from './Avatar.module.css';
 
 const Avatar = () => {
 
-    const {alpaca} = useAlpacaContext();
+    const {alpaca, alpacaImages} = useAlpacaContext();
 
     const myCanvas = React.useRef<HTMLCanvasElement>(null);
+
+
+
+
 
     useEffect(() => {
         const canvas = myCanvas.current;
@@ -17,59 +21,52 @@ const Avatar = () => {
         const canvasWidth = canvas.width;
         // @ts-ignore
         const canvasHeight = canvas.height;
-        let hairImg = new Image(720,720);
-        hairImg.src = "/hair/" + alpaca.hair + ".png";
 
-        let earsImg = new Image(720,720);
-        earsImg.src = "/ears/" + alpaca.ears + ".png";
-
-        let eyesImg = new Image(720,720);
-        eyesImg.src = "/eyes/" + alpaca.eyes + ".png";
-
-        let mouthImg = new Image(720,720);
-        mouthImg.src = "/mouth/" + alpaca.mouth + ".png";
-
-        let neckImg = new Image(720,720);
-        neckImg.src = "/neck/" + alpaca.neck + ".png";
-
-        let legImg = new Image(720,720);
-        legImg.src = "/leg/" + alpaca.leg + ".png";
-
-        let accessoryImg = new Image(720,720);
-        accessoryImg.src = "/accessories/" + alpaca.accessory + ".png";
-
-        let backgroundImg = new Image(720,720);
-        backgroundImg.src = "/backgrounds/" + alpaca.background + ".png";
 
         let noseImg = new Image(720,720);
         noseImg.src = "/nose.png";
 
         if (ctx) {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-            ctx.drawImage(backgroundImg, 0, 0, canvasWidth, canvasHeight);
-            ctx.drawImage(neckImg, 0, 0, canvasWidth, canvasHeight);
 
-            ctx.drawImage(hairImg, 0, 0, canvasWidth, canvasHeight);
-            ctx.drawImage(eyesImg, 0, 0, canvasWidth, canvasHeight);
+            if(alpacaImages.background?.src) {
+                ctx.drawImage(alpacaImages.background, 0, 0, canvasWidth, canvasHeight);
+            }
 
+            if(alpacaImages.neck?.src) {
+                ctx.drawImage(alpacaImages.neck, 0, 0, canvasWidth, canvasHeight);
+            }
 
+            if(alpacaImages.hair?.src) {
+                ctx.drawImage(alpacaImages.hair, 0, 0, canvasWidth, canvasHeight);
+            }
 
-            ctx.drawImage(legImg, 0, 0, canvasWidth, canvasHeight);
-            ctx.drawImage(earsImg, 0, 0, canvasWidth, canvasHeight);
-            ctx.drawImage(noseImg, 0, 0, canvasWidth, canvasHeight);
+            if(alpacaImages.leg?.src) {
+                ctx.drawImage(alpacaImages.leg, 0, 0, canvasWidth, canvasHeight);
+            }
 
-            ctx.drawImage(mouthImg, 0, 0, canvasWidth, canvasHeight);
-            ctx.drawImage(eyesImg, 0, 0, canvasWidth, canvasHeight);
+            if(alpacaImages.ears?.src) {
+                ctx.drawImage(alpacaImages.ears, 0, 0, canvasWidth, canvasHeight);
+            }
 
+            if(noseImg?.src) {
+                ctx.drawImage(noseImg, 0, 0, canvasWidth, canvasHeight);
+            }
 
-            ctx.drawImage(accessoryImg, 0, 0, canvasWidth, canvasHeight);
+            if(alpacaImages.mouth?.src) {
+                ctx.drawImage(alpacaImages.mouth, 0, 0, canvasWidth, canvasHeight);
+            }
 
+            if(alpacaImages.eyes?.src) {
+                ctx.drawImage(alpacaImages.eyes, 0, 0, canvasWidth, canvasHeight);
+            }
 
+            if(alpacaImages.accessories?.src) {
+                ctx.drawImage(alpacaImages.accessories, 0, 0, canvasWidth, canvasHeight);
+            }
 
         }
-
-        console.log(alpaca);
-    }, [alpaca]);
+        }, [alpaca]);
 
     return (
         <canvas ref={myCanvas} className={styles.avatar_container} width={720} height={720}>
