@@ -1,0 +1,23 @@
+.button{
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-right: 5px;
+    text-transform: capitalize;
+    color: royalblue;
+    border: 1px solid royalblue ;
+    background-color: transparent;
+}
+
+.button:focus{
+    background-color: royalblue;
+    color: white;
+}
+
+.button:hover{
+    outline: 1px solid royalblue;
+}
+
+.active {
+    background-color: royalblue;
+    color: white;
+}
