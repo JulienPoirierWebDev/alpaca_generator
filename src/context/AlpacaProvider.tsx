@@ -11,17 +11,6 @@ type Alpaca = {
     background: Styles["background"][number],
 }
 
-type AlpacaImages = {
-    hair: HTMLImageElement,
-    ears: HTMLImageElement,
-    eyes: HTMLImageElement,
-    mouth: HTMLImageElement,
-    neck: HTMLImageElement,
-    leg: HTMLImageElement,
-    accessories: HTMLImageElement,
-    background: HTMLImageElement,
-}
-
 export type AlpacaElements = "hair" | "ears" | "eyes" | "mouth" | "neck" | "leg" | "accessories" | "background";
 
 type Styles = {
@@ -34,14 +23,11 @@ type AlpacaContextType = {
     alpaca: Alpaca,
     setAlpaca: (alpaca:Alpaca) => Alpaca,
     changeAlpaca: (alpaca:Alpaca, changedKey:string, changedValue:string) => Alpaca,
-    accessories: string[],
+    alpacaElements: string[],
     styles: Styles,
-    alpacaImages: AlpacaImages
-} | undefined;
-
+};
 
 const AlpacaContext = createContext({} as AlpacaContextType);
-
 
 type Props =  ComponentPropsWithoutRef<'div'>;
 
@@ -57,26 +43,6 @@ const AlpacaProvider = ({children}:Props) => {
 
     const [actualAccessory, setActualAccessory] = React.useState("hair");
 
-    const [alpacaImages, setAlpacaImages] = React.useState({
-        hair: new Image(720, 720),
-        ears: new Image(720, 720),
-        eyes: new Image(720, 720),
-        mouth: new Image(720, 720),
-        neck: new Image(720, 720),
-        leg: new Image(720, 720),
-        accessories: new Image(720, 720),
-        backgrounds: new Image(720, 720)
-    }) as unknown as [AlpacaImages, React.Dispatch<React.SetStateAction<AlpacaImages>>];
-
-    const changeOneImage = (key:AlpacaElements, value:string) => {
-        const newImages = {...alpacaImages};
-        if(newImages[key]) {
-            newImages[key].src = `/${key}/${value}.png`;
-            setAlpacaImages((prev) => ({...prev, [key]: newImages[key]}));
-        }
-
-    }
-
     const [alpaca, setAlpaca] = React.useState({
         hair: "default",
         ears: "default",
@@ -88,17 +54,14 @@ const AlpacaProvider = ({children}:Props) => {
         background: "blue50"
     });
 
-
     const changeAlpaca = (alpaca:Alpaca, changedKey:AlpacaElements, changedValue:string) => {
         let newAlpaca:Alpaca = {...alpaca};
         newAlpaca[changedKey] = changedValue;
-
-        changeOneImage(changedKey, changedValue);
-        console.log(newAlpaca, "newAlpaca");
         setAlpaca(newAlpaca);
     }
 
-    const accessories = ["hair","ears", "eyes", "mouth", "neck", "leg", "accessories", "background"];
+    const alpacaElements = ["hair","ears", "eyes", "mouth", "neck", "leg", "accessories", "background"];
+    
     const styles:Styles= {
         hair: ["default", "bang", "curls", "elegant", "fancy", "short"],
         ears: ["default", "tilt-backward", "tilt-forward"],
@@ -110,24 +73,7 @@ const AlpacaProvider = ({children}:Props) => {
         background: ["blue50", "blue60", "blue70", "darkblue30", "darkblue50", "darkblue70", "green50", "green60", "green70", "grey40", "grey70", "grey80", "red50", "red60", "red70", "yellow50", "yellow60", "yellow70"]
     };
 
-    const values = { actualAccessory, setActualAccessory, alpaca, setAlpaca, changeAlpaca, accessories, styles, alpacaImages };
-
-    useEffect(() => {
-
-        if(alpaca !== undefined) {
-            changeOneImage('ears', alpaca.ears);
-            changeOneImage('eyes', alpaca.eyes);
-            changeOneImage('mouth', alpaca.mouth);
-            changeOneImage('neck', alpaca.neck);
-            changeOneImage('leg', alpaca.leg);
-            changeOneImage('accessories', alpaca.accessories);
-            changeOneImage('background', alpaca.background);
-        }
-
-
-
-
-    }, []);
+    const values = { actualAccessory, setActualAccessory, alpaca, setAlpaca, changeAlpaca, alpacaElements, styles };
 
     return (
         // @ts-ignore
