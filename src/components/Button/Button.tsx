@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAlpacaContext } from '../../context/AlpacaProvider';
 
 import styles from './Button.module.css';

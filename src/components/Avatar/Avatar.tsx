@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react';
-import {AlpacaElements, useAlpacaContext } from '../../context/AlpacaProvider';
 import styles from './Avatar.module.css';
 
 // @ts-ignore

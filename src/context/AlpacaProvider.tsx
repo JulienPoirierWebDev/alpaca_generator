@@ -1,4 +1,4 @@
-import React, { createContext, ComponentPropsWithoutRef, ProviderProps, useEffect } from 'react';
+import React, { createContext, ComponentPropsWithoutRef } from 'react';
 
 type Alpaca = {
     hair: Styles["hair"][number],
