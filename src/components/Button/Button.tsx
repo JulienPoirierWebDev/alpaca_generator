@@ -5,10 +5,11 @@ import styles from './Button.module.css';
 
 type ButtonProps = {
     element: string,
-    handleClick: (...el:string[]) => void
+    handleClick: (...el:string[]) => void ,
+    id?: string,
 }
 
-const Button = ({element, handleClick} : ButtonProps) => {
+const Button = ({element, handleClick, id} : ButtonProps) => {
 
     const {actualAccessory, alpaca} = useAlpacaContext();
     let isAccessory = actualAccessory === element;
@@ -18,7 +19,7 @@ const Button = ({element, handleClick} : ButtonProps) => {
     let otherStyle = isAccessory || isStyle ? styles.active : null;
     return (
         <>
-            <button className={styles.button + " " + otherStyle} onClick={() => handleClick(element)}>{element}</button>
+            <button id={id} className={styles.button + " " + otherStyle} onClick={() => handleClick(element)}>{element}</button>
         </>
     );
 };

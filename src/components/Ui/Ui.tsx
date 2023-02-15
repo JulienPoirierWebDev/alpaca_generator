@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { useAlpacaContext } from '../../context/AlpacaProvider';
 import Button from "../Button/Button";
+import DrawSave from '../DrawSave/DrawSave';
 import moduleStyles from './Ui.module.css';
 
-const Ui = ({draw}) => {
+// @ts-ignore
+const Ui = ({draw, myCanvas}) => {
 
     const alpacaContext = useAlpacaContext();
 
@@ -27,6 +29,10 @@ const Ui = ({draw}) => {
                     return <Button key={style} element={style} handleClick={ () => handleChange(style)}/>
                 } )}
             </div>
+            <div>
+                <h2>Download your Alpaca !</h2>
+            </div>
+            <DrawSave canvas={myCanvas}/>
         </div>
     );
 };
