@@ -3,7 +3,6 @@ import { useAlpacaContext } from '../../context/AlpacaProvider';
 import Button from "../Button/Button";
 import moduleStyles from './Ui.module.css';
 
-// @ts-ignore
 const Ui = ({draw}) => {
 
     const alpacaContext = useAlpacaContext();

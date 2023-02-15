@@ -14,6 +14,7 @@ const Alpaca = () => {
     const draw = ( alpaca: any, actualAccessory?: string, style?: any) => {
         const canvas = myCanvas.current;
 
+        
         const imagesUrls = [
             "/backgrounds/" + alpaca.background + ".png",
             "/neck/" + alpaca.neck + ".png",
@@ -26,6 +27,7 @@ const Alpaca = () => {
             '/accessories/' + alpaca.accessories + '.png'
         ];
 
+    
         const ctx = canvas?.getContext('2d');
         if(canvas && ctx) {
             // @ts-ignore
