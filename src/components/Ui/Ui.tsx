@@ -2,12 +2,18 @@ import React, { useContext } from 'react';
 import { useAlpacaContext } from '../../context/AlpacaProvider';
 import Button from "../Button/Button";
 
-const Ui = () => {
+// @ts-ignore
+const Ui = ({draw}) => {
 
     const alpacaContext = useAlpacaContext();
 
     const { accessories, changeAlpaca, alpaca, setAlpaca, actualAccessory, setActualAccessory, styles } = alpacaContext;
 
+    const handleChange = (style: string) => {
+        console.log("---------------")
+        changeAlpaca(alpaca,actualAccessory,style);
+        draw(alpaca,actualAccessory,style);
+    }
     return (
         <div>
             <div>
@@ -19,7 +25,8 @@ const Ui = () => {
             <div>
                 <h2>Style</h2>
                 {styles[actualAccessory].map((style:string) => {
-                    return <Button key={style} element={style} handleClick={ () => {changeAlpaca(alpaca,actualAccessory,style)}}/>
+                    // @ts-ignore
+                    return <Button key={style} element={style} handleClick={ () => handleChange(style)}/>
                 } )}
             </div>
         </div>

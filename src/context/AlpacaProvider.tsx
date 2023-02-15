@@ -94,7 +94,7 @@ const AlpacaProvider = ({children}:Props) => {
         newAlpaca[changedKey] = changedValue;
 
         changeOneImage(changedKey, changedValue);
-
+        console.log(newAlpaca, "newAlpaca");
         setAlpaca(newAlpaca);
     }
 
