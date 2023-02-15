@@ -3,6 +3,7 @@ import { useAlpacaContext } from '../../context/AlpacaProvider';
 import { loadImage } from '../../utils/loadImage';
 import Avatar from '../Avatar/Avatar';
 import Ui from '../Ui/Ui';
+import styles from './Alpaca.module.css';
 
 const Alpaca = () => {
     const myCanvas = React.useRef<HTMLCanvasElement>(null);
@@ -12,7 +13,7 @@ const Alpaca = () => {
 
     const draw = ( alpaca: any, actualAccessory?: string, style?: any) => {
         const canvas = myCanvas.current;
-        
+
         const imagesUrls = [
             "/backgrounds/" + alpaca.background + ".png",
             "/neck/" + alpaca.neck + ".png",
@@ -24,7 +25,7 @@ const Alpaca = () => {
             "/eyes/" + alpaca.eyes + ".png",
             '/accessories/' + alpaca.accessories + '.png'
         ];
-        
+
         const ctx = canvas?.getContext('2d');
         if(canvas && ctx) {
             // @ts-ignore
@@ -56,10 +57,10 @@ const Alpaca = () => {
     }, [alpaca])
 
     return (
-        <>
+        <div className={styles.alpaca_container}>
             <Avatar myCanvas={myCanvas}/>
             <Ui draw={draw}/>
-        </>
+        </div>
     );
 };
 

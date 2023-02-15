@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useAlpacaContext } from '../../context/AlpacaProvider';
 import Button from "../Button/Button";
+import moduleStyles from './Ui.module.css';
 
 // @ts-ignore
 const Ui = ({draw}) => {
@@ -14,7 +15,7 @@ const Ui = ({draw}) => {
         draw(alpaca,actualAccessory,style);
     }
     return (
-        <div>
+        <div className={moduleStyles.ui_container}>
             <div>
                 <h2>Accessorize the alpaca's</h2>
                 {alpacaElements?.map((accessory:string) => {
