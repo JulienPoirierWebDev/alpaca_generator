@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import { useAlpacaContext } from '../../context/AlpacaProvider';
 import Button from "../Button/Button";
 import DrawSave from '../DrawSave/DrawSave';
