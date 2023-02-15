@@ -1,4 +1,4 @@
-import React, { createContext, ComponentPropsWithoutRef, ProviderProps } from 'react';
+import React, { createContext, ComponentPropsWithoutRef, ProviderProps, useEffect } from 'react';
 
 type Alpaca = {
     hair: Styles["hair"][number],
@@ -7,11 +7,11 @@ type Alpaca = {
     mouth: Styles["mouth"][number],
     neck: Styles["neck"][number],
     leg: Styles["leg"][number],
-    accessory: Styles["accessories"][number],
-    background: Styles["background"][number]
+    accessories: Styles["accessories"][number],
+    background: Styles["background"][number],
 }
 
-export type AlpacaElements = "hair" | "ears" | "eyes" | "mouth" | "neck" | "leg" | "accessory" | "background";
+export type AlpacaElements = "hair" | "ears" | "eyes" | "mouth" | "neck" | "leg" | "accessories" | "background";
 
 type Styles = {
     [key: string]: string[]
@@ -23,18 +23,13 @@ type AlpacaContextType = {
     alpaca: Alpaca,
     setAlpaca: (alpaca:Alpaca) => Alpaca,
     changeAlpaca: (alpaca:Alpaca, changedKey:string, changedValue:string) => Alpaca,
-    accessories: string[],
-    styles: Styles
-} | undefined;
-
+    alpacaElements: string[],
+    styles: Styles,
+};
 
 const AlpacaContext = createContext({} as AlpacaContextType);
 
-
-type Props = {
-    value: ProviderProps<AlpacaContextType>,
-
-} & ComponentPropsWithoutRef<'div'>;
+type Props =  ComponentPropsWithoutRef<'div'>;
 
 const useAlpacaContext = () => {
     const context = React.useContext(AlpacaContext);
@@ -47,7 +42,7 @@ const useAlpacaContext = () => {
 const AlpacaProvider = ({children}:Props) => {
 
     const [actualAccessory, setActualAccessory] = React.useState("hair");
-    
+
     const [alpaca, setAlpaca] = React.useState({
         hair: "default",
         ears: "default",
@@ -55,31 +50,30 @@ const AlpacaProvider = ({children}:Props) => {
         mouth: "default",
         neck: "default",
         leg: "default",
-        accessory: "earrings",
+        accessories: "earings",
         background: "blue50"
     });
 
     const changeAlpaca = (alpaca:Alpaca, changedKey:AlpacaElements, changedValue:string) => {
         let newAlpaca:Alpaca = {...alpaca};
         newAlpaca[changedKey] = changedValue;
-
         setAlpaca(newAlpaca);
     }
+
+    const alpacaElements = ["hair","ears", "eyes", "mouth", "neck", "leg", "accessories", "background"];
     
-    const accessories = ["hair","ears", "eyes", "mouth", "neck", "leg", "accessories", "background"];
     const styles:Styles= {
-        hair: ["default", "bang", "curls", "elegant", "fancy", "quiff", "short"],
+        hair: ["default", "bang", "curls", "elegant", "fancy", "short"],
         ears: ["default", "tilt-backward", "tilt-forward"],
         eyes: ["default", "angry", "naughty", "smart", "star"],
-        mouth: ["default", "astonished", "eating", "happy", "laugh", "tongue"],
+        mouth: ["default", "astonished", "eating", "laugh", "tongue"],
         neck: ["default", "bend-backward", "bend-forward"],
         leg: ["default", "bubble-tea", "cookie", "game-console", "tilt-backward", "tilt-forward"],
-        accessories: ["earrings", "flower", "glasses", "headphone"],
+        accessories: ["earings", "flower", "glasses", "headphone"],
         background: ["blue50", "blue60", "blue70", "darkblue30", "darkblue50", "darkblue70", "green50", "green60", "green70", "grey40", "grey70", "grey80", "red50", "red60", "red70", "yellow50", "yellow60", "yellow70"]
     };
 
-    const values = { actualAccessory, setActualAccessory, alpaca, setAlpaca, changeAlpaca, accessories, styles };
-
+    const values = { actualAccessory, setActualAccessory, alpaca, setAlpaca, changeAlpaca, alpacaElements, styles };
 
     return (
         // @ts-ignore
