@@ -61,7 +61,7 @@ const Alpaca = () => {
     return (
         <div className={styles.alpaca_container}>
             <Avatar myCanvas={myCanvas}/>
-            <Ui draw={draw}/>
+            <Ui draw={draw} myCanvas={myCanvas}/>
         </div>
     );
 };
