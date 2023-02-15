@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAlpacaContext } from '../../context/AlpacaProvider';
+import { loadImage } from '../../utils/loadImage';
 import Avatar from '../Avatar/Avatar';
 import Ui from '../Ui/Ui';
 
@@ -14,13 +15,7 @@ const Alpaca = () => {
 
         let newAlpaca = {...alpaca};
 
-        const loadImage = (url: string) => new Promise((resolve, reject) => {
-            console.log("loadImage")
-            const img = new Image();
-            img.addEventListener('load', () => resolve(img));
-            img.addEventListener('error', (err) => console.log(url));
-            img.src = url;
-        });
+
 
 
         if(actualAccessory && style) {
@@ -40,6 +35,7 @@ const Alpaca = () => {
             "/nose.png",
             "/mouth/" + newAlpaca.mouth + ".png",
             "/eyes/" + newAlpaca.eyes + ".png",
+            '/accessories/' + newAlpaca.accessories + '.png'
         ];
 
 

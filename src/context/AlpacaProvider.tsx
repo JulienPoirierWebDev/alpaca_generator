@@ -100,10 +100,10 @@ const AlpacaProvider = ({children}:Props) => {
 
     const accessories = ["hair","ears", "eyes", "mouth", "neck", "leg", "accessories", "background"];
     const styles:Styles= {
-        hair: ["default", "bang", "curls", "elegant", "fancy", "quiff", "short"],
+        hair: ["default", "bang", "curls", "elegant", "fancy", "short"],
         ears: ["default", "tilt-backward", "tilt-forward"],
         eyes: ["default", "angry", "naughty", "smart", "star"],
-        mouth: ["default", "astonished", "eating", "happy", "laugh", "tongue"],
+        mouth: ["default", "astonished", "eating", "laugh", "tongue"],
         neck: ["default", "bend-backward", "bend-forward"],
         leg: ["default", "bubble-tea", "cookie", "game-console", "tilt-backward", "tilt-forward"],
         accessories: ["earings", "flower", "glasses", "headphone"],
